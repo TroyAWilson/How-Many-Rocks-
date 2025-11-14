@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://rj616v2h7o3x"]
+
+[ext_resource type="Texture2D" uid="uid://cx476wxru3sc" path="res://assets/osu.png" id="1_8hbgh"]
+[ext_resource type="Script" path="res://scenes/osu_point.gd" id="2_3osge"]
+
+[node name="osu_point" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("1_8hbgh")
+script = ExtResource("2_3osge")
