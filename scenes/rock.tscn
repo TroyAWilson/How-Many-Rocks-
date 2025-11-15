@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://ds828lu7e5hdi"]
 
-[ext_resource type="Texture2D" uid="uid://dmnqo3e1y68qk" path="res://assets/rock.png" id="1_p2dy5"]
+[ext_resource type="Texture2D" uid="uid://bpyhvjd0tw8f5" path="res://assets/rock2.png" id="1_lxff8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mtx1q"]
 friction = 0.65
 bounce = 0.18
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ii4h"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_q7bub"]
+radius = 9.05539
 
 [node name="RigidBody2D" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_mtx1q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4ii4h")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_p2dy5")
+texture = ExtResource("1_lxff8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_q7bub")

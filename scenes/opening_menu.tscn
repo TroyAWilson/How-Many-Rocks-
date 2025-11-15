@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://djxhyqoaed61u"]
+
+[ext_resource type="Script" path="res://scenes/opening_menu.gd" id="1_v2ws7"]
+[ext_resource type="AudioStream" uid="uid://df1sbpqp2iev6" path="res://assets/hmr-menu.mp3" id="2_xr68b"]
+
+[node name="OpeningMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2ws7")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 171.0
+offset_right = 442.0
+offset_bottom = 194.0
+text = "How Many Rocks?"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 235.0
+offset_right = 339.0
+offset_bottom = 302.0
+text = "start"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 228.0
+offset_right = 483.0
+offset_bottom = 299.0
+text = "quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xr68b")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

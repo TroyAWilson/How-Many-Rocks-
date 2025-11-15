@@ -12,17 +12,21 @@ var combo := 1
 @onready var timeLabel := $Time
 @onready var comboLabel := $Combo
 @onready var timer := $Timer
+@onready var audioPlayer := $AudioStreamPlayer
+
+func _ready() -> void:
+	audioPlayer.play()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if gameOver:
+		return
+	
 	if event is InputEventMouseButton and event.is_pressed():
 		rocks += 1
 		combo = 1
 		spawnRock()
 
 func _process(delta: float) -> void:
-	if gameOver:
-		return
-	
 	scoreLabel.text = str(rocks)	
 	timeLabel.text = str(round(timer.time_left))
 	comboLabel.text = "Combo Multiplier: " + str(combo)
@@ -39,17 +43,26 @@ func spawnOsu():
 	new_osu.pressed.connect(_on_osu_point_pressed.bind(new_osu))
 	osuSpawned = true
 
-func spawnRock(count:int = 1) -> void:
+func spawnRock( osu_position:Vector2 = Vector2(), count:int = 1) -> void:
 	for i in count:
-		var x = rng.randf_range(100,700)
-		var y = rng.randf_range(100,200)
+		var x_offset = rng.randf_range(-50,50)
+		var y_offset = rng.randf_range(-50,50)
 		var new_rock = rockScene.instantiate()
-		new_rock.global_position = Vector2(x,y)
+		
+		if osu_position != Vector2():
+			new_rock.global_position = Vector2(osu_position.x + x_offset, osu_position.y + y_offset)
+		else:
+			var x = rng.randf_range(100,700)
+			var y = rng.randf_range(100,500)
+			new_rock.global_position = Vector2(x,y)
+		
 		add_child(new_rock)
 
 func _on_osu_point_pressed(osu_instance:Node) -> void:
+	if gameOver:
+		return
 	rocks += 2 * combo
-	spawnRock(2*combo)
+	spawnRock(osu_instance.global_position, 2*combo)
 	combo += 1
 	
 	spawnOsuHitParticles(osu_instance.global_position)
@@ -65,7 +78,7 @@ func spawnOsuHitParticles(pos:Vector2) -> void:
 func _on_timer_timeout() -> void:
 	print('game over')
 	gameOver = true
-	get_tree().paused = true
+	#get_tree().paused = true
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

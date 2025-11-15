@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmk3d4cyfw7wi"]
+[gd_scene load_steps=8 format=3 uid="uid://bmk3d4cyfw7wi"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_kk2er"]
+[ext_resource type="AudioStream" uid="uid://cwry0i82gg0g4" path="res://assets/hmr.wav" id="2_7nh15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3023h"]
 size = Vector2(1073, 50.75)
@@ -43,12 +44,15 @@ theme_override_colors/font_color = Color(0.25098, 0.313726, 0.0627451, 1)
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 305.0
-offset_top = 672.0
-offset_right = 524.0
-offset_bottom = 799.0
+offset_left = 656.0
+offset_top = 3.0
+offset_right = 773.0
+offset_bottom = 91.0
 theme_override_colors/font_color = Color(0.25098, 0.313726, 0.0627451, 1)
 theme_override_font_sizes/font_size = 64
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7nh15")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
