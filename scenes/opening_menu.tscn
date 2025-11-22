@@ -1,7 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://djxhyqoaed61u"]
+[gd_scene load_steps=7 format=3 uid="uid://djxhyqoaed61u"]
 
 [ext_resource type="Script" path="res://scenes/opening_menu.gd" id="1_v2ws7"]
+[ext_resource type="Texture2D" uid="uid://dogj4ncx08f6s" path="res://assets/intro-menu.png" id="2_aykox"]
 [ext_resource type="AudioStream" uid="uid://df1sbpqp2iev6" path="res://assets/hmr-menu.mp3" id="2_xr68b"]
+
+[sub_resource type="Animation" id="Animation_q3r47"]
+resource_name = "base"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_v735d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iui7j"]
+_data = {
+"RESET": SubResource("Animation_v735d"),
+"base": SubResource("Animation_q3r47")
+}
 
 [node name="OpeningMenu" type="Control"]
 layout_mode = 3
@@ -12,32 +51,43 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v2ws7")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 303.0
-offset_top = 171.0
-offset_right = 442.0
-offset_bottom = 194.0
-text = "How Many Rocks?"
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.554309, 0.000123118, 0.513365, 1)
+energy = 4.32
+shadow_enabled = true
+shadow_color = Color(1.29953e-06, 0.449338, 1.92523e-06, 0)
 
-[node name="Button" type="Button" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(400, 397.75)
+texture = ExtResource("2_aykox")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_iui7j")
+}
+autoplay = "base"
+
+[node name="startButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 223.0
-offset_top = 235.0
-offset_right = 339.0
-offset_bottom = 302.0
+offset_left = 229.0
+offset_top = 641.0
+offset_right = 345.0
+offset_bottom = 708.0
 text = "start"
 
-[node name="Button2" type="Button" parent="."]
+[node name="quitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 376.0
-offset_top = 228.0
-offset_right = 483.0
-offset_bottom = 299.0
+offset_left = 526.0
+offset_top = 637.0
+offset_right = 633.0
+offset_bottom = 708.0
 text = "quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xr68b")
 autoplay = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="startButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]

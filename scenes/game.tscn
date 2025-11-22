@@ -2,54 +2,64 @@
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_kk2er"]
 [ext_resource type="AudioStream" uid="uid://cwry0i82gg0g4" path="res://assets/hmr.wav" id="2_7nh15"]
+[ext_resource type="Texture2D" uid="uid://cxyrh8n0vdbjh" path="res://assets/bg.png" id="3_etssw"]
+[ext_resource type="Texture2D" uid="uid://lh6kifyki55c" path="res://assets/ui-info2.png" id="3_xa6pp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3023h"]
-size = Vector2(1073, 50.75)
+size = Vector2(1073, 46.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jagmv"]
-size = Vector2(122, 680.375)
+size = Vector2(122, 717.188)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hbih"]
-size = Vector2(104, 676.875)
-
-[sub_resource type="Gradient" id="Gradient_b46i5"]
-offsets = PackedFloat32Array(0, 0.62987, 1)
-colors = PackedColorArray(0.25098, 0.313726, 0.0627451, 1, 0.627451, 0.658824, 0.25098, 1, 0.815686, 0.815686, 0.345098, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_81w23"]
-gradient = SubResource("Gradient_b46i5")
-width = 16
-height = 16
+size = Vector2(104, 716.438)
 
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_kk2er")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.554309, 0.000123118, 0.513365, 1)
+energy = 4.32
+shadow_enabled = true
+shadow_color = Color(1.29953e-06, 0.449338, 1.92523e-06, 0)
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(400, 400)
+texture = ExtResource("3_etssw")
+
+[node name="ui" type="Sprite2D" parent="."]
+position = Vector2(565, 74)
+scale = Vector2(0.754286, 0.66)
+texture = ExtResource("3_xa6pp")
+
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 16.0
-offset_right = 242.0
-offset_bottom = 89.0
-theme_override_colors/font_color = Color(0.25098, 0.313726, 0.0627451, 1)
+offset_left = 652.0
+offset_top = 59.0
+offset_right = 784.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.627451, 0.658824, 0.25098, 1)
+theme_override_font_sizes/font_size = 32
 
 [node name="Combo" type="Label" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 59.0
-offset_right = 174.0
-offset_bottom = 99.0
-theme_override_colors/font_color = Color(0.25098, 0.313726, 0.0627451, 1)
+offset_left = 496.0
+offset_top = 57.0
+offset_right = 614.0
+offset_bottom = 102.0
+theme_override_colors/font_color = Color(0.627451, 0.658824, 0.25098, 1)
+theme_override_font_sizes/font_size = 32
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 656.0
-offset_top = 3.0
-offset_right = 773.0
-offset_bottom = 91.0
-theme_override_colors/font_color = Color(0.25098, 0.313726, 0.0627451, 1)
-theme_override_font_sizes/font_size = 64
+offset_left = 369.0
+offset_top = 59.0
+offset_right = 450.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.627451, 0.658824, 0.25098, 1)
+theme_override_font_sizes/font_size = 32
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_7nh15")
@@ -64,22 +74,15 @@ position = Vector2(411, 715.25)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(15, -16.25)
+position = Vector2(23, 15.9375)
 shape = SubResource("RectangleShape2D_3023h")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(428, -378.063)
+position = Vector2(446, -361.844)
 shape = SubResource("RectangleShape2D_jagmv")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-410, -374.813)
+position = Vector2(-453, -360.469)
 shape = SubResource("RectangleShape2D_1hbih")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-z_index = -985
-position = Vector2(-10.5016, 10.8856)
-rotation = -1.5708
-scale = Vector2(9.6202, 50.362)
-texture = SubResource("GradientTexture2D_81w23")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

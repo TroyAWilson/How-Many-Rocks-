@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://rj616v2h7o3x"]
+[gd_scene load_steps=5 format=3 uid="uid://rj616v2h7o3x"]
 
-[ext_resource type="Texture2D" uid="uid://cx476wxru3sc" path="res://assets/osu.png" id="1_8hbgh"]
+[ext_resource type="Texture2D" uid="uid://boyg6gx2eeeb0" path="res://assets/big-rock.png" id="1_q55rb"]
 [ext_resource type="Script" path="res://scenes/osu_point.gd" id="2_3osge"]
+[ext_resource type="Texture2D" uid="uid://cplrgxvkqw8n7" path="res://assets/big-rock128-ss.png" id="3_baiat"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_hqhlg"]
+frames = 7
+frame_0/texture = ExtResource("1_q55rb")
+frame_1/duration = 1.0
+frame_2/duration = 1.0
+frame_3/duration = 1.0
+frame_4/duration = 1.0
+frame_5/duration = 1.0
+frame_6/duration = 1.0
 
 [node name="osu_point" type="TextureButton"]
 anchors_preset = 15
@@ -9,5 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("1_8hbgh")
+texture_normal = SubResource("AnimatedTexture_hqhlg")
 script = ExtResource("2_3osge")
+spritesheet = ExtResource("3_baiat")
+frame_size = Vector2i(128, 128)
