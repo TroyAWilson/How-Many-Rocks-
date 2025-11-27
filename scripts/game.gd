@@ -14,6 +14,8 @@ var combo := 1
 @onready var comboLabel := $Combo
 @onready var timer := $Timer
 @onready var audioPlayer := $AudioStreamPlayer
+@onready var osuRockSound := $osuRockSound #https://pixabay.com/sound-effects/rock-destroy-6409/
+@onready var fallingRockSound := $fallingRocks #https://pixabay.com/sound-effects/tumbling-rocks-97910/
 
 func _ready() -> void:
 	audioPlayer.play()
@@ -70,6 +72,7 @@ func _on_osu_point_pressed(osu_instance:Node) -> void:
 	spawnRock(osu_instance.global_position, 2*combo)
 	combo += 1
 	
+	osuRockSound.play()
 	spawnOsuHitParticles(osu_instance.global_position)
 	
 	osu_instance.queue_free()

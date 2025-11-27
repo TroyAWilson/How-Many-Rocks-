@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dt3588nonq7qi"
+path="res://.godot/imported/parallaxbg.png-556aeb7fe12ca7f637f018d2f6b7aaec.image"
+
+[deps]
+
+source_file="res://assets/parallaxbg.png"
+dest_files=["res://.godot/imported/parallaxbg.png-556aeb7fe12ca7f637f018d2f6b7aaec.image"]
+
+[params]
+

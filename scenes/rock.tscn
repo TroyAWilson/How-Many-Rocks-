@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds828lu7e5hdi"]
+[gd_scene load_steps=5 format=3 uid="uid://ds828lu7e5hdi"]
 
+[ext_resource type="Script" path="res://scenes/rock.gd" id="1_5m575"]
 [ext_resource type="Texture2D" uid="uid://bpyhvjd0tw8f5" path="res://assets/rock2.png" id="1_lxff8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mtx1q"]
@@ -9,8 +10,9 @@ bounce = 0.18
 [sub_resource type="CircleShape2D" id="CircleShape2D_q7bub"]
 radius = 9.05539
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Rock" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_mtx1q")
+script = ExtResource("1_5m575")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lxff8")
@@ -18,3 +20,8 @@ texture = ExtResource("1_lxff8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_q7bub")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.277
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
