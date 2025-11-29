@@ -84,14 +84,7 @@ func spawnOsuHitParticles(pos:Vector2) -> void:
 	p.global_position = pos
 
 func _on_timer_timeout() -> void:
-	print('game over')
 	gameOver = true
-	#get_tree().paused = true
-
 	var GO_screen = gameOverScene.instantiate()
 	GO_screen
 	add_child(GO_screen)
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	print('area entered')
-	print(area)

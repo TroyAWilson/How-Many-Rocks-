@@ -15,6 +15,8 @@ var lbu
 @onready var leaderboard_container := $LeaderBoardContainer
 @onready var lineEdit := $LineEdit
 @onready var submitButton := $LineEdit/submit
+@onready var loadingLabel := $Loading
+@onready var playerScoreLabel := $PlayerScore
 
 var default_headers := [
 	"apikey: %s" % ANON_KEY,
@@ -25,11 +27,18 @@ var default_headers := [
 func _ready():
 	var gsb = await get_scoreboard()
 	write_scoreboard(gsb)
+	var playerScore = get_parent().get_node("Score")
+	playerScoreLabel.text = "How many rocks? " + str(playerScore.text)
+	
+			
 			
 func refresh_leaderboard() -> void:
+	#Maybe se loadingLabel to true here?
+	loadingLabel.show()
 	clear_scoreboard()
-	var gsb := await get_scoreboard()
+	var gsb := await get_scoreboard()	
 	write_scoreboard(gsb)
+	
 	
 func clear_scoreboard() -> void:
 	for child in leaderboard_container.get_children():
@@ -41,6 +50,8 @@ func write_scoreboard(gsb) -> void:
 		lbu.get_child(0).text = i.username
 		lbu.get_child(1).text = str(i.score)
 		leaderboard_container.add_child(lbu)
+	
+	loadingLabel.hide()
 		
 func _get_http_request() -> HTTPRequest:
 	var http := HTTPRequest.new()
@@ -66,7 +77,8 @@ func get_scoreboard() -> Array:
 	if response_code >= 200 and response_code < 300:
 		var data = JSON.parse_string(body_text)
 		if typeof(data) == TYPE_ARRAY:
-			return data
+			#var top10 = data.slice(0,10)
+			return data.slice(0,10)
 		else:
 			push_error("Supabase: expected Array, got %s" % typeof(data))
 			return []
@@ -74,8 +86,8 @@ func get_scoreboard() -> Array:
 		push_error("Supabase HTTP %s: %s" % [response_code, body_text])
 		return []
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+func _on_return_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/opening_menu.tscn")
 
 func _on_replay_pressed() -> void:
 	get_tree().reload_current_scene()

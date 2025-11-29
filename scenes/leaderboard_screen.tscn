@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://j22rgs0ocg1x"]
+
+[ext_resource type="Script" path="res://scenes/leaderboard_screen.gd" id="1_24k42"]
+
+[node name="LeaderboardScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_24k42")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.554309, 0.000123118, 0.513365, 1)
+energy = 4.32
+shadow_enabled = true
+shadow_color = Color(1.29953e-06, 0.449338, 1.92523e-06, 0)
+
+[node name="leaderBoardContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 93.0
+offset_right = 545.0
+offset_bottom = 324.0
+theme_override_constants/separation = 25
+
+[node name="goBack" type="Button" parent="."]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 19.0
+offset_right = 429.0
+offset_bottom = 64.0
+text = "Return to menu"
+
+[connection signal="pressed" from="goBack" to="." method="_on_go_back_pressed"]

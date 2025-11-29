@@ -71,13 +71,14 @@ autoplay = "base"
 
 [node name="startButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 641.0
-offset_right = 345.0
-offset_bottom = 708.0
+offset_left = 189.0
+offset_top = 643.0
+offset_right = 305.0
+offset_bottom = 710.0
 text = "start"
 
 [node name="quitButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 526.0
 offset_top = 637.0
@@ -85,9 +86,19 @@ offset_right = 633.0
 offset_bottom = 708.0
 text = "quit"
 
+[node name="leaderboardButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 642.0
+offset_right = 470.0
+offset_bottom = 708.0
+text = "Leader Board"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_xr68b")
+volume_db = -35.0
 autoplay = true
 
 [connection signal="pressed" from="startButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="leaderboardButton" to="." method="_on_leaderboard_button_pressed"]
