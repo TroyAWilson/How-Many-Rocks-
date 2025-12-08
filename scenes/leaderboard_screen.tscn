@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://j22rgs0ocg1x"]
+[gd_scene load_steps=3 format=3 uid="uid://j22rgs0ocg1x"]
 
 [ext_resource type="Script" path="res://scenes/leaderboard_screen.gd" id="1_24k42"]
+[ext_resource type="AudioStream" uid="uid://w32ykq2lfg5n" path="res://assets/music/SeeingDouble_Loopable.wav" id="2_fd0qh"]
 
 [node name="LeaderboardScreen" type="Control"]
 layout_mode = 3
@@ -32,5 +33,10 @@ offset_top = 19.0
 offset_right = 429.0
 offset_bottom = 64.0
 text = "Return to menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fd0qh")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="pressed" from="goBack" to="." method="_on_go_back_pressed"]

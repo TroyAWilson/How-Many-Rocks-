@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://djxhyqoaed61u"]
+[gd_scene load_steps=15 format=3 uid="uid://djxhyqoaed61u"]
 
 [ext_resource type="Script" path="res://scenes/opening_menu.gd" id="1_v2ws7"]
-[ext_resource type="Texture2D" uid="uid://dogj4ncx08f6s" path="res://assets/intro-menu.png" id="2_aykox"]
-[ext_resource type="AudioStream" uid="uid://df1sbpqp2iev6" path="res://assets/hmr-menu.mp3" id="2_xr68b"]
+[ext_resource type="Texture2D" uid="uid://upb3apk2dbsh" path="res://assets/menu.png" id="2_x5dew"]
+[ext_resource type="Texture2D" uid="uid://nmb7xardxvag" path="res://assets/start-button.png" id="3_4n065"]
+[ext_resource type="AudioStream" uid="uid://clr4wts4q30a" path="res://assets/music/ChillMenu_Loopable.wav" id="3_5ymgw"]
+[ext_resource type="Texture2D" uid="uid://ctlhsvjtx44p4" path="res://assets/lb-button.png" id="4_jvd03"]
 
 [sub_resource type="Animation" id="Animation_v735d"]
 length = 0.001
@@ -42,6 +44,26 @@ _data = {
 "base": SubResource("Animation_q3r47")
 }
 
+[sub_resource type="Theme" id="Theme_p7noh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igd07"]
+texture = ExtResource("3_4n065")
+region_rect = Rect2(200, 0, 200, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yaner"]
+texture = ExtResource("3_4n065")
+region_rect = Rect2(0, 0, 200, 100)
+
+[sub_resource type="Theme" id="Theme_p2lyr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xogt5"]
+texture = ExtResource("4_jvd03")
+region_rect = Rect2(200, 0, 200, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6b82"]
+texture = ExtResource("4_jvd03")
+region_rect = Rect2(0, 0, 200, 100)
+
 [node name="OpeningMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -59,7 +81,7 @@ shadow_color = Color(1.29953e-06, 0.449338, 1.92523e-06, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(400, 397.75)
-texture = ExtResource("2_aykox")
+texture = ExtResource("2_x5dew")
 hframes = 2
 frame = 1
 
@@ -71,11 +93,15 @@ autoplay = "base"
 
 [node name="startButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 189.0
-offset_top = 643.0
-offset_right = 305.0
-offset_bottom = 710.0
-text = "start"
+offset_left = 307.0
+offset_top = 483.0
+offset_right = 474.0
+offset_bottom = 572.0
+theme = SubResource("Theme_p7noh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_igd07")
+theme_override_styles/hover = SubResource("StyleBoxTexture_igd07")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_igd07")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yaner")
 
 [node name="quitButton" type="Button" parent="."]
 visible = false
@@ -88,15 +114,18 @@ text = "quit"
 
 [node name="leaderboardButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 343.0
-offset_top = 642.0
-offset_right = 470.0
-offset_bottom = 708.0
-text = "Leader Board"
+offset_left = 307.0
+offset_top = 584.0
+offset_right = 476.0
+offset_bottom = 672.0
+theme = SubResource("Theme_p2lyr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xogt5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xogt5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_n6b82")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xr68b")
-volume_db = -35.0
+stream = ExtResource("3_5ymgw")
+volume_db = -25.0
 autoplay = true
 
 [connection signal="pressed" from="startButton" to="." method="_on_button_pressed"]
