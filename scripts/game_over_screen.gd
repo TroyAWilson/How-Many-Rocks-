@@ -49,6 +49,10 @@ func write_scoreboard(gsb) -> void:
 		lbu = leaderBoardUser.instantiate()
 		lbu.get_child(0).text = i.username
 		lbu.get_child(1).text = str(i.score)
+		#Color override
+		lbu.get_child(0).add_theme_color_override("font_color", "#0f380f")
+		lbu.get_child(1).add_theme_color_override("font_color", "#0f380f")
+		
 		leaderboard_container.add_child(lbu)
 	
 	loadingLabel.hide()

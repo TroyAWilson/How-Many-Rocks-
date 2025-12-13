@@ -10,11 +10,11 @@ var default_headers := [
 ]
 var lbu
 
-@onready var leaderboard_container := $leaderBoardContainer
+@onready var leaderboard_container := $MarginContainer/leaderBoardContainer#$leaderBoardContainer
 
 func _ready() -> void:
 	var gsb = await get_scoreboard()
-	write_scoreboard(gsb)
+	write_scoreboard(gsb.slice(0,10))
 	
 func _get_http_request() -> HTTPRequest:
 	var http := HTTPRequest.new()
@@ -27,6 +27,8 @@ func write_scoreboard(gsb) -> void:
 		lbu = leaderBoardUser.instantiate()
 		lbu.get_child(0).text = i.username
 		lbu.get_child(1).text = str(i.score)
+		lbu.get_child(0).add_theme_color_override("font_color", "#0f380f")
+		lbu.get_child(1).add_theme_color_override("font_color", "#0f380f")
 		leaderboard_container.add_child(lbu)
 
 func get_scoreboard() -> Array:
@@ -56,4 +58,8 @@ func get_scoreboard() -> Array:
 		return []
 
 func _on_go_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/opening_menu.tscn")
+
+
+func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/opening_menu.tscn")

@@ -64,28 +64,28 @@ autoplay = "GO_jiggle"
 
 [node name="return" type="Button" parent="."]
 layout_mode = 0
-offset_left = 392.0
-offset_top = 296.0
-offset_right = 602.0
-offset_bottom = 336.0
+offset_left = 393.0
+offset_top = 669.0
+offset_right = 603.0
+offset_bottom = 709.0
 text = "Return to main menu"
 icon = ExtResource("3_sww40")
 
 [node name="replay" type="Button" parent="."]
 layout_mode = 0
-offset_left = 259.0
-offset_top = 296.0
-offset_right = 360.0
-offset_bottom = 336.0
+offset_left = 247.0
+offset_top = 669.0
+offset_right = 348.0
+offset_bottom = 709.0
 text = "Replay"
 icon = ExtResource("3_sww40")
 
 [node name="LineEdit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 334.0
-offset_top = 390.0
-offset_right = 452.0
-offset_bottom = 421.0
+offset_left = 293.0
+offset_top = 343.0
+offset_right = 411.0
+offset_bottom = 374.0
 placeholder_text = "username"
 max_length = 3
 
@@ -98,26 +98,37 @@ text = "Submit"
 
 [node name="LeaderBoardContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 422.0
-offset_right = 578.0
-offset_bottom = 719.0
+offset_left = 236.0
+offset_top = 386.0
+offset_right = 551.0
+offset_bottom = 660.0
 theme_override_constants/separation = 25
 
 [node name="Loading" type="Label" parent="."]
 layout_mode = 0
-offset_left = 383.0
-offset_top = 440.0
-offset_right = 458.0
-offset_bottom = 463.0
+offset_left = 358.0
+offset_top = 434.0
+offset_right = 433.0
+offset_bottom = 457.0
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 text = "Loading..."
+
+[node name="LeaderboardLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 312.0
+offset_right = 454.0
+offset_bottom = 338.0
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+text = "LeaderBoard"
 
 [node name="PlayerScore" type="Label" parent="."]
 layout_mode = 0
 offset_left = 318.0
-offset_top = 346.0
+offset_top = 283.0
 offset_right = 471.0
-offset_bottom = 379.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
 
 [connection signal="pressed" from="return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="replay" to="." method="_on_replay_pressed"]

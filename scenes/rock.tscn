@@ -22,6 +22,6 @@ position = Vector2(1, 1)
 shape = SubResource("CircleShape2D_q7bub")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -15.277
+volume_db = -20.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
